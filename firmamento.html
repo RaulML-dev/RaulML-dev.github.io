@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firmamento - Tienda Online | Proyecto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="project-page">
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Volver al portafolio
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero del Proyecto -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <div class="project-badge">
+                    <i class="fas fa-graduation-cap"></i>
+                    Trabajo Fin de Grado
+                </div>
+
+                <h1 class="project-title">
+                    <span class="gradient-text">Firmamento</span>
+                    <span class="project-subtitle">Tienda Online con Django</span>
+                </h1>
+
+                <p class="project-description">
+                    Aplicación web de comercio electrónico desarrollada como Trabajo de Fin de Grado.
+                    Una tienda online completa de camisetas con funcionalidades avanzadas, desarrollada
+                    con Django, PostgreSQL y desplegada con Docker.
+                </p>
+
+                <div class="project-tech-hero">
+                    <span class="tech-tag-hero">Django</span>
+                    <span class="tech-tag-hero">Python</span>
+                    <span class="tech-tag-hero">PostgreSQL</span>
+                    <span class="tech-tag-hero">Docker</span>
+                    <span class="tech-tag-hero">HTML/CSS</span>
+                    <span class="tech-tag-hero">JavaScript</span>
+                </div>
+
+                <div class="project-links-hero">
+                    <a href="https://github.com/RaulML-dev/firmamentoWEB" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        Ver en GitHub
+                    </a>
+                    <a href="#demo" class="btn btn-secondary">
+                        <i class="fas fa-images"></i>
+                        Ver capturas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características principales -->
+    <section class="project-features">
+        <div class="container">
+            <h2 class="section-title gradient-text">Funcionalidades Principales</h2>
+            <div class="section-line"></div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Gestión de Usuarios</h3>
+                    <p>Sistema completo de registro, login y perfiles de usuario con validaciones robustas y correos de
+                        bienvenida automáticos.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Carrito Inteligente</h3>
+                    <p>Carrito persistente para usuarios registrados y temporal para anónimos, con transferencia
+                        automática al iniciar sesión.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Pedidos y Facturas</h3>
+                    <p>Proceso completo de checkout con generación automática de facturas en PDF y envío por email de
+                        confirmación.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Historial de Compras</h3>
+                    <p>Los usuarios pueden consultar todos sus pedidos anteriores con detalles completos de cada compra
+                        realizada.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Sistema de Contacto</h3>
+                    <p>Formulario funcional que envía emails tanto a los administradores como confirmación al cliente.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Diseño Responsive</h3>
+                    <p>Interfaz moderna en tema oscuro, completamente adaptable a dispositivos móviles y desktop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de imágenes -->
+    <section id="demo" class="project-gallery">
+        <div class="container">
+            <h2 class="section-title gradient-text">Capturas del Proyecto</h2>
+            <div class="section-line"></div>
+
+            <div class="gallery-container">
+                <div class="gallery-main">
+                    <img id="mainImage" src="/img/login.png" alt="Captura principal" class="main-image">
+                    <div class="image-overlay">
+                        <button class="gallery-btn prev" onclick="changeImage(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-btn next" onclick="changeImage(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-thumbnails">
+                    <img src="/img/login.png" alt="Login" class="thumbnail active" onclick="setMainImage(0)">
+                    <img src="/img/frontend.png" alt="Frontend" class="thumbnail" onclick="setMainImage(1)">
+                    <img src="/img/Padmin.png" alt="Panel Admin" class="thumbnail" onclick="setMainImage(2)">
+                </div>
+
+                <div class="image-descriptions">
+                    <div class="image-desc active">
+                        <h4>Sistema de Autenticación</h4>
+                        <p>Página de login con validaciones y diseño moderno en tema oscuro.</p>
+                    </div>
+                    <div class="image-desc">
+                        <h4>Tienda Principal</h4>
+                        <p>Catálogo de productos con filtros, carrito y navegación intuitiva.</p>
+                    </div>
+                    <div class="image-desc">
+                        <h4>Panel de Administración</h4>
+                        <p>Gestión completa de productos, pedidos y usuarios desde Django Admin.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologías utilizadas -->
+    <section class="project-tech-section">
+        <div class="container">
+            <h2 class="section-title gradient-text">Tecnologías Utilizadas</h2>
+            <div class="section-line"></div>
+
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">Django</span>
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">SQLite</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3><i class="fas fa-paint-brush"></i> Frontend</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">HTML5</span>
+                        <span class="tech-item">CSS3</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">Bootstrap</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3><i class="fas fa-tools"></i> Herramientas</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">Docker</span>
+                        <span class="tech-item">Git</span>
+                        <span class="tech-item">GitHub</span>
+                        <span class="tech-item">WeasyPrint</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desafíos y aprendizajes -->
+    <section class="project-challenges">
+        <div class="container">
+            <h2 class="section-title gradient-text">Desafíos Superados</h2>
+            <div class="section-line"></div>
+
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h3>Despliegue con Docker</h3>
+                    <p>Configuración completa del entorno de producción con Docker Compose, PostgreSQL y gestión de
+                        variables de entorno.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Generación de PDFs</h3>
+                    <p>Implementación de facturas automáticas en PDF usando WeasyPrint, incluyendo la resolución de
+                        dependencias del sistema.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Trabajo en Equipo</h3>
+                    <p>Colaboración efectiva usando Git, manejo de ramas por funcionalidad y resolución de conflictos en
+                        equipo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="project-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Te interesa el proyecto?</h2>
+                <p>Puedes revisar todo el código fuente y la documentación completa en GitHub</p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/RaulML-dev/firmamentoWEB" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        Ver código completo
+                    </a>
+                    <a href="index.html#contacto" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Contactar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Raúl ML • <a href="index.html">Volver al portafolio</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Galería de imágenes
+        let currentImage = 0;
+        const images = [
+            '/img/login.png',
+            '/img/frontend.png',
+            '/img/Padmin.png'
+        ];
+
+        // Inicializar con la primera imagen
+        document.addEventListener('DOMContentLoaded', function () {
+            setMainImage(0);
+        });
+
+        function setMainImage(index) {
+            currentImage = index;
+            document.getElementById('mainImage').src = images[index];
+
+            // Actualizar thumbnails
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+
+            // Actualizar descripciones
+            document.querySelectorAll('.image-desc').forEach((desc, i) => {
+                desc.classList.toggle('active', i === index);
+            });
+        }
+
+        function changeImage(direction) {
+            currentImage += direction;
+            if (currentImage >= images.length) currentImage = 0;
+            if (currentImage < 0) currentImage = images.length - 1;
+            setMainImage(currentImage);
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+
+        // Función para ampliar imagen
+        function openImageModal(imageSrc) {
+            // Crear modal
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.innerHTML = `
+                <div class="modal-overlay" onclick="closeImageModal()">
+                    <div class="modal-content" onclick="event.stopPropagation()">
+                        <img src="${imageSrc}" alt="Imagen ampliada" class="modal-image">
+                        <button class="modal-close" onclick="closeImageModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.querySelector('.image-modal');
+            if (modal) {
+                modal.remove();
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Añadir evento click a la imagen principal
+        document.addEventListener('DOMContentLoaded', function () {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.style.cursor = 'pointer';
+            mainImage.addEventListener('click', function () {
+                openImageModal(this.src);
+            });
+
+            // También añadir a los thumbnails
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', function () {
+                    // Primero cambiar la imagen principal
+                    const index = Array.from(document.querySelectorAll('.thumbnail')).indexOf(this);
+                    setMainImage(index);
+                });
+
+                // Doble click para ampliar
+                thumb.addEventListener('dblclick', function () {
+                    openImageModal(this.src);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
