@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow Planner - PWA Social | Proyecto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="project-page">
+    <!-- Header -->
+    <header class="project-header">
+        <div class="container">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Volver al portafolio
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero del Proyecto -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+
+
+                <h1 class="project-title">
+                    <span class="gradient-text">LifeFlow Planner</span>
+                    <span class="project-subtitle">PWA y Red Social Gamificada</span>
+                </h1>
+
+                <p class="project-description">
+                    Aplicación Web Progresiva (PWA) diseñada para revolucionar la gestión de hábitos diarios. 
+                    Incorpora un innovador sistema de 'Squads' (grupos sociales) con presión positiva, validación fotográfica en tiempo real y notificaciones push nativas.
+                </p>
+
+                <div class="project-tech-hero">
+                    <span class="tech-tag-hero">Next.js</span>
+                    <span class="tech-tag-hero">Supabase</span>
+                    <span class="tech-tag-hero">TypeScript</span>
+                    <span class="tech-tag-hero">Tailwind CSS</span>
+                    <span class="tech-tag-hero">PWA</span>
+                    <span class="tech-tag-hero">Edge Functions</span>
+                </div>
+
+                <div class="project-links-hero">
+                    <a href="https://github.com/RaulML-dev/LifeFlowPlanner" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        Ver en GitHub
+                    </a>
+                    <a href="#demo" class="btn btn-secondary">
+                        <i class="fas fa-images"></i>
+                        Ver capturas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características principales -->
+    <section class="project-features">
+        <div class="container">
+            <h2 class="section-title gradient-text">Funcionalidades Principales</h2>
+            <div class="section-line"></div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Ecosistema 'Squads'</h3>
+                    <p>Grupos cerrados y privados donde los usuarios comparten y monitorean el cumplimiento de sus objetivos diarios en equipo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Validación 'BeReal'</h3>
+                    <p>Sistema que fuerza el uso en vivo de la cámara del móvil (sin poder subir fotos de galería) para garantizar honestidad en los hábitos.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Notificaciones Push Nativas</h3>
+                    <p>Integración total con la Web Push API. Un Cron Job analiza cada 2 horas a los usuarios rezagados y les envía avisos directos al móvil.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Gamificación y 'Nudges'</h3>
+                    <p>Mecánicas de presión social positiva. Si alguien no cumple su tarea, el resto del Squad puede enviarle 'Fuegos' virtuales como toque de atención.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Alta Seguridad (RLS)</h3>
+                    <p>Base de datos PostgreSQL con estrictas políticas de Row Level Security. Generación de URLs firmadas temporales para fotos privadas.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Instalación Nativa (PWA)</h3>
+                    <p>Diseño premium Glassmorphism y Mobile-First. Se instala como una aplicación nativa en iOS y Android con cache offline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de imágenes -->
+    <section id="demo" class="project-gallery">
+        <div class="container">
+            <h2 class="section-title gradient-text">Capturas del Proyecto</h2>
+            <div class="section-line"></div>
+
+            <div class="gallery-container">
+                <div class="gallery-main">
+                    <img id="mainImage" src="/img/lifeflow1.jpg" alt="Muro Social del Squad" class="main-image">
+                    <div class="image-overlay">
+                        <button class="gallery-btn prev" onclick="changeImage(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-btn next" onclick="changeImage(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-thumbnails">
+                    <img src="/img/lifeflow1.jpg" alt="Muro Social" class="thumbnail active" onclick="setMainImage(0)">
+                    <img src="/img/lifeflow2.jpg" alt="Calendario" class="thumbnail" onclick="setMainImage(1)">
+                    <img src="/img/lifeflow3.jpg" alt="Auth" class="thumbnail" onclick="setMainImage(2)">
+                    <img src="/img/lifeflow4.jpg" alt="Perfil" class="thumbnail" onclick="setMainImage(3)">
+                </div>
+
+                <div class="image-descriptions">
+                    <div class="image-desc active">
+                        <h4>Dashboard Principal</h4>
+                        <p>Vista principal del calendario con seguimiento de rachas y estado diario de los hábitos.</p>
+                    </div>
+                    <div class="image-desc">
+                        <h4>Gestión de Agenda</h4>
+                        <p>Panel interactivo de la agenda con opciones para completar, cancelar o eliminar tareas diarias.</p>
+                    </div>
+                    <div class="image-desc">
+                        <h4>Tareas del Squad</h4>
+                        <p>Gestión interna del grupo para revisar misiones y subir evidencias fotográficas desde la cámara.</p>
+                    </div>
+                    <div class="image-desc">
+                        <h4>Muro Social en Vivo</h4>
+                        <p>Feed en tiempo real donde se muestran las tareas y fotos del día subidas por cada miembro del grupo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologías utilizadas -->
+    <section class="project-tech-section">
+        <div class="container">
+            <h2 class="section-title gradient-text">Tecnologías Utilizadas</h2>
+            <div class="section-line"></div>
+
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">Supabase</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">Edge Functions (Deno)</span>
+                        <span class="tech-item">pg_cron</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3><i class="fas fa-paint-brush"></i> Frontend</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">Next.js 14</span>
+                        <span class="tech-item">React</span>
+                        <span class="tech-item">TypeScript</span>
+                        <span class="tech-item">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3><i class="fas fa-tools"></i> Infra & API</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">Vercel</span>
+                        <span class="tech-item">next-pwa</span>
+                        <span class="tech-item">Web Push API</span>
+                        <span class="tech-item">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desafíos y aprendizajes -->
+    <section class="project-challenges">
+        <div class="container">
+            <h2 class="section-title gradient-text">Desafíos Superados</h2>
+            <div class="section-line"></div>
+
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Arquitectura Serverless</h3>
+                    <p>Delegación de carga de Vercel a Supabase Edge Functions para manejar el envío masivo de notificaciones push sin consumir recursos del frontend.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Seguridad y Privacidad</h3>
+                    <p>Configuración de políticas granulares RLS en Postgres y firmas criptográficas (Signed URLs) para proteger la privacidad de las fotos subidas al Storage.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Service Workers y PWA</h3>
+                    <p>Integración de capacidades offline reales e intercepción de notificaciones push nativas en ecosistemas restrictivos como iOS Safari.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="project-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Te interesa el proyecto?</h2>
+                <p>Puedes revisar todo el código fuente y el README completo en GitHub</p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/RaulML-dev/LifeFlowPlanner" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        Ver código completo
+                    </a>
+                    <!-- Opcional: Link a la app real en Vercel
+                    <a href="https://lifeflow-planner-qx1rwhdd2-rauls-projects-8d7bfa7c.vercel.app/" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ver Web en vivo
+                    </a>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Raúl ML • <a href="index.html">Volver al portafolio</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Galería de imágenes
+        let currentImage = 0;
+        const images = [
+            '/img/lifeflow1.jpg',
+            '/img/lifeflow2.jpg',
+            '/img/lifeflow3.jpg',
+            '/img/lifeflow4.jpg'
+        ];
+
+        // Inicializar con la primera imagen
+        document.addEventListener('DOMContentLoaded', function () {
+            setMainImage(0);
+        });
+
+        function setMainImage(index) {
+            currentImage = index;
+            document.getElementById('mainImage').src = images[index];
+
+            // Actualizar thumbnails
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+
+            // Actualizar descripciones
+            document.querySelectorAll('.image-desc').forEach((desc, i) => {
+                desc.classList.toggle('active', i === index);
+            });
+        }
+
+        function changeImage(direction) {
+            currentImage += direction;
+            if (currentImage >= images.length) currentImage = 0;
+            if (currentImage < 0) currentImage = images.length - 1;
+            setMainImage(currentImage);
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+
+        // Función para ampliar imagen
+        function openImageModal(imageSrc) {
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.innerHTML = `
+                <div class="modal-overlay" onclick="closeImageModal()">
+                    <div class="modal-content" onclick="event.stopPropagation()">
+                        <img src="${imageSrc}" alt="Imagen ampliada" class="modal-image">
+                        <button class="modal-close" onclick="closeImageModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.querySelector('.image-modal');
+            if (modal) {
+                modal.remove();
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Añadir eventos a las imágenes
+        document.addEventListener('DOMContentLoaded', function () {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.style.cursor = 'pointer';
+            mainImage.addEventListener('click', function () {
+                openImageModal(this.src);
+            });
+
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', function () {
+                    const index = Array.from(document.querySelectorAll('.thumbnail')).indexOf(this);
+                    setMainImage(index);
+                });
+                thumb.addEventListener('dblclick', function () {
+                    openImageModal(this.src);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
