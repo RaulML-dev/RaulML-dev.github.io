@@ -76,12 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Efecto navbar al hacer scroll
     function handleNavbarScroll() {
         const navbar = document.getElementById("navbar")
-        if (window.scrollY > 50) {
-            navbar.style.background = "rgba(255, 255, 255, 0.98)"
-            navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)"
+        if (window.scrollY > 40) {
+            navbar.classList.add("scrolled")
         } else {
-            navbar.style.background = "rgba(255, 255, 255, 0.95)"
-            navbar.style.boxShadow = "none"
+            navbar.classList.remove("scrolled")
         }
     }
 
@@ -196,11 +194,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".fade-in").forEach((el) => {
         observer.observe(el)
     })
+
+    // Inicializar el sistema de partículas interactivo en el hero
+    initParticles()
 })
 
 // Función para copiar email al clipboard
 function copyEmail() {
-    const email = "raul@ejemplo.com"
+    const email = "raulmldev19@gmail.com"
     navigator.clipboard.writeText(email).then(() => {
         // Mostrar notificación de copiado
         const notification = document.createElement("div")
@@ -240,3 +241,176 @@ style.textContent = `
       }
   `
 document.head.appendChild(style)
+
+// Sistema de partículas interactivo para el fondo del Hero
+function initParticles() {
+    const canvas = document.getElementById("hero-particles")
+    if (!canvas) return
+
+    const ctx = canvas.getContext("2d")
+    const heroSection = document.querySelector(".hero")
+
+    let particlesArray = []
+    let width = canvas.width = heroSection.offsetWidth
+    let height = canvas.height = heroSection.offsetHeight
+
+    const mouse = {
+        x: null,
+        y: null,
+        radius: 120, // Radio de interacción / repulsión
+        active: false
+    }
+
+    // Rastrear posición del mouse relativa al hero
+    heroSection.addEventListener("mousemove", (e) => {
+        const rect = heroSection.getBoundingClientRect()
+        mouse.x = e.clientX - rect.left
+        mouse.y = e.clientY - rect.top
+        mouse.active = true
+    })
+
+    heroSection.addEventListener("mouseleave", () => {
+        mouse.x = null
+        mouse.y = null
+        mouse.active = false
+    })
+
+    // Escuchar redimensionamiento de la ventana
+    window.addEventListener("resize", () => {
+        width = canvas.width = heroSection.offsetWidth
+        height = canvas.height = heroSection.offsetHeight
+        initParticlesList()
+    })
+
+    class Particle {
+        constructor(x, y, directionX, directionY, size, color) {
+            this.x = x
+            this.y = y
+            this.directionX = directionX
+            this.directionY = directionY
+            this.size = size
+            this.color = color
+        }
+
+        draw() {
+            ctx.beginPath()
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false)
+            ctx.fillStyle = this.color
+            ctx.fill()
+        }
+
+        update() {
+            // Rebotar en los bordes
+            if (this.x > width || this.x < 0) {
+                this.directionX = -this.directionX
+            }
+            if (this.y > height || this.y < 0) {
+                this.directionY = -this.directionY
+            }
+
+            // Física de repulsión interactiva con el mouse
+            if (mouse.active && mouse.x !== null && mouse.y !== null) {
+                let dx = mouse.x - this.x
+                let dy = mouse.y - this.y
+                let distance = Math.sqrt(dx * dx + dy * dy)
+
+                if (distance < mouse.radius) {
+                    let forceDirectionX = dx / distance
+                    let forceDirectionY = dy / distance
+
+                    // Fuerza proporcional a la cercanía (más cerca = más empuje)
+                    let force = (mouse.radius - distance) / mouse.radius
+                    let directionX = forceDirectionX * force * 2.5
+                    let directionY = forceDirectionY * force * 2.5
+
+                    this.x -= directionX
+                    this.y -= directionY
+                }
+            }
+
+            // Mover partícula
+            this.x += this.directionX
+            this.y += this.directionY
+
+            // Dibujar partícula
+            this.draw()
+        }
+    }
+
+    // Inicializar lista de partículas
+    function initParticlesList() {
+        particlesArray = []
+        // Densidad de partículas adaptativa según tamaño de pantalla
+        let numberOfParticles = Math.floor((width * height) / 13000)
+        if (numberOfParticles > 85) numberOfParticles = 85
+        if (numberOfParticles < 25) numberOfParticles = 25
+
+        const colors = [
+            "rgba(59, 130, 246, 0.35)",  // Azul
+            "rgba(139, 92, 246, 0.35)",  // Violeta
+            "rgba(6, 182, 212, 0.35)"    // Turquesa
+        ]
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            let size = Math.random() * 3.5 + 1.2 // Tamaño aleatorio
+            let x = Math.random() * (width - size * 2) + size
+            let y = Math.random() * (height - size * 2) + size
+            let directionX = (Math.random() * 0.7) - 0.35
+            let directionY = (Math.random() * 0.7) - 0.35
+            let color = colors[Math.floor(Math.random() * colors.length)]
+
+            particlesArray.push(new Particle(x, y, directionX, directionY, size, color))
+        }
+    }
+
+    // Conectar partículas cercanas con líneas
+    function connect() {
+        let opacityValue = 1
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+                let dx = particlesArray[a].x - particlesArray[b].x
+                let dy = particlesArray[a].y - particlesArray[b].y
+                let distance = Math.sqrt(dx * dx + dy * dy)
+
+                if (distance < 110) {
+                    opacityValue = 1 - (distance / 110)
+                    ctx.strokeStyle = `rgba(139, 92, 246, ${opacityValue * 0.15})`
+                    ctx.lineWidth = 0.8
+                    ctx.beginPath()
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y)
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y)
+                    ctx.stroke()
+                }
+            }
+
+            // Dibujar línea fina del mouse a las partículas cercanas
+            if (mouse.active && mouse.x !== null && mouse.y !== null) {
+                let dx = particlesArray[a].x - mouse.x
+                let dy = particlesArray[a].y - mouse.y
+                let distance = Math.sqrt(dx * dx + dy * dy)
+                if (distance < mouse.radius) {
+                    opacityValue = 1 - (distance / mouse.radius)
+                    ctx.strokeStyle = `rgba(59, 130, 246, ${opacityValue * 0.22})`
+                    ctx.lineWidth = 1
+                    ctx.beginPath()
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y)
+                    ctx.lineTo(mouse.x, mouse.y)
+                    ctx.stroke()
+                }
+            }
+        }
+    }
+
+    // Bucle de animación principal
+    function animate() {
+        ctx.clearRect(0, 0, width, height)
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update()
+        }
+        connect()
+        requestAnimationFrame(animate)
+    }
+
+    initParticlesList()
+    animate()
+}
